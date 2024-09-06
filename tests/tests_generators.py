@@ -66,7 +66,7 @@ def transaction_list():
             "from": "Visa Platinum 1246377376343588",
             "to": "Счет 14211924144426031657",
         },
-    ],
+    ]
 
 
 
@@ -113,16 +113,17 @@ def usd_transaction():
 
 
 def test_filter_by_currency(transaction_list, usd_transaction):
+    """Функция тестирует выдачу списка операций по названию валюты"""
     assert filter_by_currency(transaction_list, "USD") == usd_transaction
 
 
-def test_transaction_descriptions():
+def test_transaction_descriptions(transaction_list):
+    """Функция тестирует генератор номеров карт"""
     des = transaction_descriptions(transaction_list)
-    for i in range(4):
-        assert next(des) == "Перевод организации"
-        assert next(des) == "Перевод со счета на счет"
-        assert next(des) == "Перевод со счета на счет"
-        assert next(des) == "Перевод с карты на карту"
+    assert next(des) == "Перевод организации"
+    assert next(des) == "Перевод со счета на счет"
+    assert next(des) == "Перевод со счета на счет"
+    assert next(des) == "Перевод с карты на карту"
 
 
 

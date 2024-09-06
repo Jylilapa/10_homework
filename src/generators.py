@@ -1,16 +1,23 @@
 def filter_by_currency(transaction_list, name):
-    new_list_transactions = list(filter(lambda transaction_list: name==(transaction_list.get("operationAmount").get("currency").get("name")), transaction_list))
-    return new_list_transactions
+    """Функция выдает список трансакций с определенной валютой"""
+    for transaction in transaction_list:
+        new_list_transactions = list(filter(lambda transaction: name==transaction["operationAmount"]["currency"]["name"], transaction_list))
+        return new_list_transactions
 
 
-def transaction_descriptions(transactions):
-    transactions_info = list(map(lambda transactions: transactions.get("description"), transactions))
-    for transaction in transactions_info:
-        # transaction_str = str(transaction)
+def transaction_descriptions(transactions_list):
+    """Функция выдает описание операций"""
+    description_of_transactions = ""
+    for transact in transactions_list:
+        description_of = transact["description"]
+        description_of_transactions = description_of_transactions + description_of + "/n"
+    description_of_transactions_list = description_of_transactions.split("/n")
+    for transaction in description_of_transactions_list:
         yield transaction
 
 
 def card_number_generator(start: int, end: int) -> str:
+    """Функция генерирует номера карт"""
     for number in range(start, end+1):
         card_number = str(number)
         while len(card_number) < 16:
@@ -21,7 +28,7 @@ def card_number_generator(start: int, end: int) -> str:
         yield (formatted_card_number)
 
 
-gen_number = card_number_generator(1,3)
-print(next(gen_number))
-print(next(gen_number))
-print(next(gen_number))
+# gen_number = card_number_generator(1,3)
+# print(next(gen_number))
+# print(next(gen_number))
+# print(next(gen_number))
