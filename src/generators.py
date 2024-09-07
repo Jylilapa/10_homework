@@ -1,8 +1,11 @@
-def filter_by_currency(transaction_list, name):
+from typing import Iterator, List
+
+
+def filter_by_currency(transaction_list: List[dict], name: str) -> Iterator[dict]:
     """Функция выдает список трансакций с определенной валютой"""
     for transaction in transaction_list:
-        new_list_transactions = list(filter(lambda transaction: name==transaction["operationAmount"]["currency"]["name"], transaction_list))
-        return new_list_transactions
+        if transaction.get("operationAmount").get("currency").get("name") == name:
+            yield transaction
 
 
 def transaction_descriptions(transactions_list):
