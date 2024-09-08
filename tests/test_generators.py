@@ -1,6 +1,10 @@
 import pytest
 
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+from src.generators import (
+    filter_by_currency,
+    transaction_descriptions,
+    card_number_generator,
+)
 
 
 @pytest.fixture
@@ -69,7 +73,6 @@ def transaction_list():
     ]
 
 
-
 @pytest.fixture
 def usd_transaction():
     return [
@@ -118,7 +121,7 @@ def test_filter_by_currency(transaction_list, usd_transaction):
 
 
 def test_transaction_descriptions(transaction_list):
-    """Функция тестирует генератор номеров карт"""
+    """Функция тестирует выдачу списка описания операций"""
     des = transaction_descriptions(transaction_list)
     assert next(des) == "Перевод организации"
     assert next(des) == "Перевод со счета на счет"
@@ -126,9 +129,10 @@ def test_transaction_descriptions(transaction_list):
     assert next(des) == "Перевод с карты на карту"
 
 
-
-def test_card_number_generator():
-    gen_number = card_number_generator(1, 3)
+@pytest.mark.parametrize("start, end", [(1, 3)])
+def test_card_number_generator(start, end):
+    """Функция тестирует генератор номеров карт"""
+    gen_number = card_number_generator(start, end)
     assert next(gen_number) == "0000 0000 0000 0001"
     assert next(gen_number) == "0000 0000 0000 0002"
     assert next(gen_number) == "0000 0000 0000 0003"
