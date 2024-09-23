@@ -37,11 +37,7 @@ def transaction_fix():
 
 
 def test_get_amount_rub(transaction_fix_rub):
-    assert get_amount(transaction_fix_rub) == "48223.05"
-
-
-def test_get_amount(transaction_fix):
-    assert get_amount(transaction_fix) == 271230.83615
+    assert get_amount(transaction_fix_rub) == 48223.05
 
 
 @patch("requests.get")

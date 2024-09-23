@@ -20,4 +20,4 @@ def get_amount(transaction: dict) -> float:
         result = response.json()
         return result["result"]
     else:
-        return amount
+        return float(amount)
