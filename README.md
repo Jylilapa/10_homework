@@ -12,12 +12,14 @@ git clone https://github.com/Jylilapa/one_homework.git
 pip install -r requirements.txt
 ```
 ## Тестирование
-Запустите файлы test_masks.py, test_processing.py, test_widget.py, test_generators.py, test_decorators.py из папки tests
+Запустите файлы test_masks.py, test_processing.py, test_widget.py, test_generators.py, test_decorators.py, test_external_api, test_utils из папки tests
 ## Использование
 1. Модуль widget.py принимает Наименование карты или счет и номер и возвращает замаскированный номер
 2. Модуль processing.py принимает список операций и возвращает отсортированные по успешности и по дате списки
 3. Модуль generators.py сортирует списки операций и генерирует номера карт
 4. Модуль decorators.py автоматически логирует начало и конец выполнения функции, а также ее результаты или возникшие ошибки
+5. Модуль utils принимает путь к JSON файлу и возвращает список словарей с транзакциями
+6. Модуль external_api принимает на вход транзакцию, конвертирует сумму в рубли и возвращает сумму транзакции
 
 ## Документация
 Для подробной документации обратитесь к [документации](docs/README.md)
