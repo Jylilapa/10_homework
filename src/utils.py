@@ -1,8 +1,7 @@
 import json
-import os
 import logging
+import os
 from json import JSONDecodeError
-
 
 # Создаем основные конфигурации logging
 logging.basicConfig(
