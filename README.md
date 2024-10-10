@@ -1,6 +1,6 @@
 # Проект.
 ## Описание
-Виджет, отображающий успешные банковские операции клиента
+Виджет, отображающий банковские операции клиента
 ## Установка
 1. Клонируйте репозиторий
 ```
@@ -12,7 +12,7 @@ git clone https://github.com/Jylilapa/one_homework.git
 pip install -r requirements.txt
 ```
 ## Тестирование
-Запустите файлы test_masks.py, test_processing.py, test_widget.py, test_generators.py, test_decorators.py, test_external_api, test_utils из папки tests
+Запустите файлы test_masks.py, test_processing.py, test_widget.py, test_generators.py, test_decorators.py, test_external_api, test_utils, test_search_operations из папки tests
 ## Использование
 1. Модуль widget.py принимает Наименование карты или счет и номер и возвращает замаскированный номер
 2. Модуль processing.py принимает список операций и возвращает отсортированные по успешности и по дате списки
@@ -21,6 +21,8 @@ pip install -r requirements.txt
 5. Модуль utils принимает путь к JSON файлу и возвращает список словарей с транзакциями
 6. Модуль external_api принимает на вход транзакцию, конвертирует сумму в рубли и возвращает сумму транзакции
 7. Модуль csv_exsel считывает финансовые операции из CSV- и XLSX-файлов
+8. Модуль search_operations фильтрует список операций по описанию и считает количество операций по каждой категории
+9. Модуль main запускает приложение
 
 ## Документация
 Для подробной документации обратитесь к [документации](docs/README.md)
